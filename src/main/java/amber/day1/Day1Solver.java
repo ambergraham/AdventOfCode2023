@@ -29,35 +29,26 @@ public class Day1Solver extends Solver {
     /**
      * @param line Text that we want to determine a calibration value from.
      * @return The integer found by combining the first digit and the last digit (in that order) in the line.
-     *     Will always be a single two-digit number unless the line contains no digits in which case 0 will be returned.
      */
     private static int getCalibrationValue(String line) {
         int lineLength = line.length();
-        StringBuilder calibrationValueStringBuilder = new StringBuilder();
+        int calibrationValue = 0;
         // Find the first digit by starting at the beginning of the string
         for(int i = 0; i < lineLength; i++) {
-            if (appendCharacterIfDigit(line.charAt(i), calibrationValueStringBuilder)) {
+            char character = line.charAt(i);
+            if (Character.isDigit(character)) {
+                calibrationValue += 10 * Character.getNumericValue(character);
                 break;
             }
         }
         // Find the last digit by starting from the end of the string
         for (int i = lineLength - 1; i >= 0; i--) {
-            if (appendCharacterIfDigit(line.charAt(i), calibrationValueStringBuilder)) {
+            char character = line.charAt(i);
+            if (Character.isDigit(character)) {
+                calibrationValue += Character.getNumericValue(character);
                 break;
             }
         }
-        if (!calibrationValueStringBuilder.isEmpty()) {
-            String calibrationValueString = calibrationValueStringBuilder.toString();
-            return Integer.parseInt(calibrationValueString);
-        }
-        return 0;
-    }
-
-    private static boolean appendCharacterIfDigit(char character, StringBuilder calibrationValueStringBuilder) {
-        if (Character.isDigit(character)) {
-            calibrationValueStringBuilder.append(character);
-            return true;
-        }
-        return false;
+        return calibrationValue;
     }
 }
