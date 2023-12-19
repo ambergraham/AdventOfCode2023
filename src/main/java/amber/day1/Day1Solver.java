@@ -12,6 +12,7 @@ import java.net.URL;
  */
 public class Day1Solver extends Solver {
     private static final String BROKEN_CALIBRATION_FILE = "broken-calibration-document.txt";
+    @Override
     public void solve() {
         URL resourceURL = getURL(BROKEN_CALIBRATION_FILE);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resourceURL.openStream()))) {
@@ -20,7 +21,7 @@ public class Day1Solver extends Solver {
             while ((line = reader.readLine()) != null) {
                 calibrationValueSum += getCalibrationValue(line);
             }
-            System.out.println("Solution: " + calibrationValueSum);
+            System.out.println("Day 1 Solution: " + calibrationValueSum);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
