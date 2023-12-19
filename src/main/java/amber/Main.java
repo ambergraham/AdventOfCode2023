@@ -1,7 +1,7 @@
 package amber;
 
 import amber.day1.Day1Solver;
-import amber.day1.Day2Solver;
+import amber.day2.Day2Solver;
 
 public class Main {
     public static void main(String[] args) {

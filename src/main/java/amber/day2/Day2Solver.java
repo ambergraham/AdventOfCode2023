@@ -1,4 +1,4 @@
-package amber.day1;
+package amber.day2;
 
 import amber.Solver;
 
