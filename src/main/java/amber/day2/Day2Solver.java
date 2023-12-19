@@ -68,7 +68,13 @@ public class Day2Solver extends Solver {
         return Integer.parseInt(gameTitle.split(" ")[1]);
     }
 
+    /**
+     * @param cubeAmount Amount of cubes.
+     * @param cubeColor Color of the cubes to validate.
+     * @return True if the cubeAmount is less than or equal to the number of cubes of cubeColor in the bag.
+     */
     private static boolean isValidCubeAmount(int cubeAmount, String cubeColor) {
-        return cubeAmount <= CUBES_IN_BAG.get(cubeColor);
+        Integer cubesInBag = CUBES_IN_BAG.get(cubeColor);
+        return cubesInBag != null && cubeAmount <= cubesInBag;
     }
 }
